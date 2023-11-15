@@ -1,0 +1,31 @@
+img {
+    width: 450px;
+    height: 450px;
+}
+
+.data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+  }
+  
+  .data a {
+    text-decoration: none;
+    color: inherit;
+    width: calc(25% - 10px); 
+    margin-bottom: 20px; 
+  }
+  
+  
+  .data a img {
+    
+  }
+  
+  .data a h2 {
+    
+  }
+  
+  .data a p {
+   
+  }
+  

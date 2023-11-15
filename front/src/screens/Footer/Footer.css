@@ -1,0 +1,22 @@
+.icon-container {
+    background-color: #708090;
+    display: flex; /* Para que los iconos estén en línea */
+    gap: 10px; /* Espaciado entre los iconos */
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+
+  }
+
+  /* Estilo para los enlaces no visitados */
+.icon-container a {
+    color: #000; /* Color de enlace no visitado (por ejemplo, negro) */
+    text-decoration: none; /* Eliminar subrayado */
+}
+
+/* Estilo para los enlaces visitados */
+.icon-container a:visited {
+    color: #000; /* Color de enlace visitado (puede ser el mismo que el no visitado) */
+}
+

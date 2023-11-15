@@ -1,0 +1,33 @@
+.comment {
+    width: 20px;
+    height: 20px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+  }
+  
+  .info {
+    margin-left: 5px; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .descripcion {
+    padding:  5px;
+    border: 1px solid rgb(12, 7, 7);
+    border-radius: 20px;
+  }
+.nombre{
+    font-size: 40px;
+}
+
+button{
+  width: 75px;
+  height: 75px;
+}
+
+img{
+   border-radius: 10px;
+}

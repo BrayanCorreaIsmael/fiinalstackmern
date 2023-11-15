@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    align-items: center; 
+    justify-content: center;  
+    
+}
+
+  .navbar a {
+    color: black;
+    text-align: center;
+    margin: 50px; 
+    text-decoration: none;
+  }
+
+  .trolley {
+    
+    width: 35px;
+    height: 35px;
+}
+
+.logo{
+    margin-left: 10px;
+    width: 95px;
+    height: 95px;
+}
