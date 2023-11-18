@@ -1,8 +1,11 @@
 import React from 'react'
 import './Header.css'
 import { Route, Routes } from 'react-router-dom'
+// import { cartCount } from '../Products/Header'
+
 
 const Header = () => {
+  
   return (
     <>
     <div className='navbar'>
@@ -12,19 +15,21 @@ const Header = () => {
       <a href="">Mujer</a>
       <a href="">Niño/a</a>
       <a href="">Accesorios</a>
-      <a href="">Sale</a>
+      <a href="">Mi cuenta</a>
+      
       <img src="/carrito-de-compras.svg" alt="" className='trolley'/>
     </div>
       <hr />
 
 
 
-        {/* <Routes>
+        {/*  
+          <Routes>
             <Route path='/' element={<Header/>}/>
             <Route path='/Destacados' element={<Header/>}/>
             <Route path='/Hombre' element={<Donate/>}/>
             <Route path='/Mujer' element={<Products/>}/>
-            <Route path='/Niño-a/' element={<ProductDetail/>}/>
+            <Route path='/Niño-a/' element={<Header/>}/>
             <Route path='/Accesorios' element={<Header/>}/>
             <Route path='/Sale' element={<Header/>}/>
         </Routes> */}
@@ -37,3 +42,5 @@ const Header = () => {
 }
 
 export default Header
+
+

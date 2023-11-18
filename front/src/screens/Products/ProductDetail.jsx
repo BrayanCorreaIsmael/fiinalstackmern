@@ -43,6 +43,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductDetails.css';
+import Header from '../Header/Header'
+
+
 
 const ProductDetail = () => {
   const { pid } = useParams();
@@ -62,12 +65,36 @@ const ProductDetail = () => {
       setCartTotal(prevTotal => prevTotal + productSelect.precio);
       
       setCartCount(prevCount => prevCount + 1);
-    //   console.log('Producto agregado al carrito:', productSelect);
+    
     }
   };
+  // const addToCart = () => {
+  //   if (productSelect) {
+  //     setCartTotal(prevTotal => prevTotal + productSelect.precio);
+  //     setCartCount(prevCount => prevCount + 1);
+  
+  //     // Enviar la actualización al servidor
+  //     fetch('http://localhost:3040/api/sessionRouter', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         userId: user.id,
+  //         total: cartTotal + productSelect.precio,
+  //       }),
+  //     })
+  //       .then(res => res.json())
+  //       .then(result => {
+  //         // Manejar la respuesta del servidor si es necesario
+  //       });
+  //   }
+  // };
+  
 
   return (
-    <div>
+      <div>
+      <Header/>
       {productSelect ? (
         <div className="container">
           {productSelect.thumbnail && (
@@ -79,6 +106,7 @@ const ProductDetail = () => {
             <p className="descripcion">{productSelect.descripcion}</p>
             <button onClick={addToCart}>Agregar al carrito</button></p>
           </div>
+          
         </div>
       ) : (
         <h2>Cargando</h2>
@@ -90,5 +118,6 @@ const ProductDetail = () => {
     </div>
   );
 };
+
 
 export default ProductDetail;
