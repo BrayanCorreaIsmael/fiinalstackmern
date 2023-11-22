@@ -33,4 +33,28 @@ const deleteProduct = async (pid) => {
 
 /* Desarrolla la ruta para crear productos */
 
-module.exports = { createProduct, getProducts, deleteProduct, getProductById };
+const updateProduct = async (pid, updatedProductData) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      pid,
+      updatedProductData,
+      { new: true }
+    );
+
+    if (updatedProduct) {
+      return { ok: true, updatedProduct };
+    } else {
+      return { error: "Producto no encontrado" };
+    }
+  } catch (err) {
+    return { error: "id no válido" };
+  }
+};
+
+module.exports = {
+  createProduct,
+  getProducts,
+  deleteProduct,
+  getProductById,
+  updateProduct,
+};

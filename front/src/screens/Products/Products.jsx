@@ -12,7 +12,7 @@ const Products = () => {
     }, [])
     console.log(products)
     const firstFourProducts = products.slice(0, 4);
-    const SecondFourProducts = products.slice(4, 8);
+    const SecondFourProducts = products.slice(4, 9);
   return (
     <div>
       

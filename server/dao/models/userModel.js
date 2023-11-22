@@ -19,16 +19,6 @@ const UserSchema = new mongoose.Schema({
   contrasena: { type: String, required: true },
   total: { type: Number, required: true },
   role: { type: String, required: true },
-  carrito: [
-    {
-      productoId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Producto",
-        required: true,
-      },
-      cantidad: { type: Number, default: 1 },
-    },
-  ],
 });
 
 const User = mongoose.model("User", UserSchema);

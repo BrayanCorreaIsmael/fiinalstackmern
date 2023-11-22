@@ -4,6 +4,7 @@ const {
   getProducts,
   deleteProduct,
   getProductById,
+  updateProduct,
 } = require("../dao/controllers/productController");
 const productRouter = express.Router();
 
@@ -39,6 +40,33 @@ productRouter.get("/:pid", async (req, res) => {
     res.status(200).json({ ok: true, product });
   } else {
     res.status(404).json({ ok: false, error: "product not found" });
+  }
+});
+
+// ... (rutas existentes)
+
+// Ruta para actualizar un producto usando PATCH
+productRouter.patch("/:pid", async (req, res) => {
+  const { pid } = req.params;
+  const updatedData = req.body;
+
+  // Verificamos si se proporcionaron datos para actualizar
+  if (!Object.keys(updatedData).length) {
+    return res
+      .status(400)
+      .json({ ok: false, error: "No data provided for update" });
+  }
+
+  const result = await updateProduct(pid, updatedData);
+
+  if (result.ok) {
+    return res.status(200).json({
+      ok: true,
+      products: await getProducts(),
+      updatedProduct: result.updatedProduct,
+    });
+  } else {
+    return res.status(404).json({ ok: false, error: result.error });
   }
 });
 
