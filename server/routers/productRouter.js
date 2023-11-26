@@ -79,5 +79,6 @@ formato de repsuesta:
 
 {ok: (si esta bien es true sino es false), product: }
 */
+// Middleware para manejar errores
 
 module.exports = productRouter;
