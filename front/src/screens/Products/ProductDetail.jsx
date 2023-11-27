@@ -150,14 +150,14 @@ const ProductDetail = () => {
   const handleSave = async () => {
     try {
       const response = await fetch(`http://localhost:3040/api/products/${pid}`, {
-        method: 'PATCH',  // Cambiando de PUT a PATCH
+        method: 'PATCH', 
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(editedProduct),
       });
   
-      // Loguea la respuesta para debug
+      
       console.log('Respuesta del servidor:', await response.text());
   
       const result = await response.json();

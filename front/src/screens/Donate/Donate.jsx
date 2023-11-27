@@ -1,152 +1,249 @@
+// import React, { Component } from 'react';
+
+// class Donate extends Component {
+//   state = {
+//     nombre: '',
+//     precio: 0,
+//     stock: 0,
+//     descripcion: '',
+//     thumbnail: '', // Manteniendo thumbnail para la URL de la imagen
+//   };
+
+    
 
 
+//   handleInputChange = (event) => {
+//     const { name, value } = event.target;
+//     this.setState({ [name]: value });
+//   };
 
-  // import React, { Component } from 'react';
+//   handleSubmit = async (event) => {
+//     event.preventDefault();
 
-  // class Donate extends Component {
-  //   state = {
-  //     nombre: '',
-  //     precio: 0,
-  //     stock: 0,
-  //     descripcion: '',
-  //     thumbnail: '',
-  //   };
+//     try {
+//       const response = await fetch('http://localhost:3040/api/products/', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(this.state),
+//       });
 
-  //   handleInputChange = (event) => {
-  //     const { name, value } = event.target;
-  //     this.setState({ [name]: value });
-  //   };
+//       if (response.ok) {
+//         console.log('Producto creado exitosamente');
+//       } else {
+//         console.error('Error al crear el producto');
+//       }
+//     } catch (error) {
+//       console.error('Error de red:', error);
+//     }
+//   };
 
-  //   handleFileChange = (event) => {
-  //     const file = event.target.files[0];
-  //     this.setState({ thumbnail: file });
-  //   };
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label>Nombre:</label>
+//         <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleInputChange} required />
 
-  //   handleSubmit = async (event) => {
-  //     event.preventDefault();
+//         <label>Precio:</label>
+//         <input type="number" name="precio" value={this.state.precio} onChange={this.handleInputChange} required />
 
-  //     try {
-  //       const response = await fetch('http://localhost:3040/api/products/', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(this.state),
-  //       });
+//         <label>Stock:</label>
+//         <input type="number" name="stock" value={this.state.stock} onChange={this.handleInputChange} required />
 
-  //       if (response.ok) {
-  //         console.log('Producto creado exitosamente');
-  //         // Puedes hacer algo después de que el producto se haya creado
-  //       } else {
-  //         console.error('Error al crear el producto');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error de red:', error);
-  //     }
-  //   };
+//         <label>Descripción:</label>
+//         <textarea name="descripcion" value={this.state.descripcion} onChange={this.handleInputChange} required />
 
-  //   render() {
-  //     return (
-  //       <form onSubmit={this.handleSubmit}>
-  //         <label>Nombre:</label>
-  //         <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleInputChange} required />
+//         <label>Nombre de la imagen:</label>
+//         <input type="text" name="thumbnail" value={this.state.thumbnail} onChange={this.handleInputChange} required />
 
-  //         <label>Precio:</label>
-  //         <input type="number" name="precio" value={this.state.precio} onChange={this.handleInputChange} required />
+//         <button type="submit">Crear Producto</button>
+//       </form>
+//     );
+//   }
+// }
 
-  //         <label>Stock:</label>
-  //         <input type="number" name="stock" value={this.state.stock} onChange={this.handleInputChange} required />
+// export default Donate;
 
-  //         <label>Descripción:</label>
-  //         <textarea name="descripcion" value={this.state.descripcion} onChange={this.handleInputChange} required />
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
-  //         <label>Thumbnail:</label>
-  //         <input type="file" name="thumbnail" value={this.state.thumbnail} onChange={this.handleInputChange} required /> 
+// const Donate = () => {
+//   const [productData, setProductData] = useState({
+//     nombre: '',
+//     precio: 0,
+//     stock: 0,
+//     descripcion: '',
+//     thumbnail: '', // Manteniendo thumbnail para la URL de la imagen
+//   });
 
-          
+//   const [image, setImage] = useState(null);
 
+//   const handleInputChange = (event) => {
+//     const { name, value } = event.target;
+//     setProductData({ ...productData, [name]: value });
+//   };
 
+//   const handleImageChange = (e) => {
+//     const file = e.target.files[0];
+//     setImage(file);
+//   };
 
-  //         <button type="submit">Crear Producto</button>
-  //       </form>
-  //     );
-  //   }
-  // }
+//   const handleImageUpload = async () => {
+//     try {
+//       const formData = new FormData();
+//       formData.append('image', image);
 
-  // export default Donate;
-  import React, { Component } from 'react';
+//       // Cambia la URL a la ruta correspondiente de tu servidor
+//       const response = await axios.post('http://localhost:3040/api/upload', formData);
 
-  class Donate extends Component {
-    state = {
-      nombre: '',
-      precio: 0,
-      stock: 0,
-      descripcion: '',
-      thumbnail: null,  // Cambiado a null
-    };
-  
-    handleInputChange = (event) => {
-      const { name, value } = event.target;
-      this.setState({ [name]: value });
-    };
-  
-    handleFileChange = (event) => {
-      const file = event.target.files[0];
-      this.setState({ thumbnail: file });
-    };
-  
-    handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const formData = new FormData();
-        formData.append('nombre', this.state.nombre);
-        formData.append('precio', this.state.precio);
-        formData.append('stock', this.state.stock);
-        formData.append('descripcion', this.state.descripcion);
-        formData.append('thumbnail', this.state.thumbnail);
-  
-        const response = await fetch('http://localhost:3040/api/products/', {
-          method: 'POST',
-          body: formData,
-        });
-  
-        if (response.ok) {
-          console.log('Producto creado exitosamente');
-          // Puedes hacer algo después de que el producto se haya creado
-        } else {
-          console.error('Error al crear el producto');
-        }
-      } catch (error) {
-        console.error('Error de red:', error);
-      }
-    };
-  
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <label>Nombre:</label>
-          <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleInputChange} required />
-  
-          <label>Precio:</label>
-          <input type="number" name="precio" value={this.state.precio} onChange={this.handleInputChange} required />
-  
-          <label>Stock:</label>
-          <input type="number" name="stock" value={this.state.stock} onChange={this.handleInputChange} required />
-  
-          <label>Descripción:</label>
-          <textarea name="descripcion" value={this.state.descripcion} onChange={this.handleInputChange} required />
-  
-          <label>Thumbnail:</label>
-          <input type="file" name="thumbnail" onChange={this.handleFileChange} required />
-  
-          <button type="submit">Crear Producto</button>
-        </form>
-      );
+//       console.log(response.data);
+//       // Actualiza la URL de la imagen en el estado del producto
+//       setProductData({ ...productData, thumbnail: response.data.url });
+
+//     } catch (error) {
+//       console.error('Error al subir la imagen', error);
+//     }
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+
+//     try {
+//       // Realiza la solicitud POST para crear el producto
+//       const response = await fetch('http://localhost:3040/api/products/', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(productData),
+//       });
+
+//       if (response.ok) {
+//         console.log('Producto creado exitosamente');
+//       } else {
+//         console.error('Error al crear el producto');
+//       }
+//     } catch (error) {
+//       console.error('Error de red:', error);
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>Nombre:</label>
+//       <input type="text" name="nombre" value={productData.nombre} onChange={handleInputChange} required />
+
+//       <label>Precio:</label>
+//       <input type="number" name="precio" value={productData.precio} onChange={handleInputChange} required />
+
+//       <label>Stock:</label>
+//       <input type="number" name="stock" value={productData.stock} onChange={handleInputChange} required />
+
+//       <label>Descripción:</label>
+//       <textarea name="descripcion" value={productData.descripcion} onChange={handleInputChange} required />
+
+//       <label>Subir Imagen:</label>
+//       <input type="file" onChange={handleImageChange} />
+//       <button type="button" onClick={handleImageUpload}>Subir Imagen</button>
+
+//       <label>Nombre de la imagen:</label>
+//       <input type="text" name="thumbnail" value={productData.thumbnail} onChange={handleInputChange} required />
+
+//       <button type="submit">Crear Producto</button>
+//     </form>
+//   );
+// };
+
+// export default Donate;
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const Donate = () => {
+  const [productData, setProductData] = useState({
+    nombre: '',
+    precio: 0,
+    stock: 0,
+    descripcion: '',
+    thumbnail: '', // Manteniendo thumbnail para la URL de la imagen
+  });
+
+  const [image, setImage] = useState(null);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setProductData({ ...productData, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
+  const handleImageUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('image', image);
+
+      // Cambia la URL a la ruta correspondiente de tu servidor
+      const response = await axios.post('http://localhost:3040/api/upload', formData);
+
+      console.log(response.data);
+      // Actualiza la URL de la imagen en el estado del producto
+      setProductData({ ...productData, thumbnail: response.data.url });
+
+    } catch (error) {
+      console.error('Error al subir la imagen', error);
     }
-  }
-  
-  export default Donate;
-  
-  
+  };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Realiza la solicitud POST para crear el producto
+      const response = await fetch('http://localhost:3040/api/products/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+      });
+
+      if (response.ok) {
+        console.log('Producto creado exitosamente');
+      } else {
+        console.error('Error al crear el producto');
+      }
+    } catch (error) {
+      console.error('Error de red:', error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Nombre:</label>
+      <input type="text" name="nombre" value={productData.nombre} onChange={handleInputChange} required />
+
+      <label>Precio:</label>
+      <input type="number" name="precio" value={productData.precio} onChange={handleInputChange} required />
+
+      <label>Stock:</label>
+      <input type="number" name="stock" value={productData.stock} onChange={handleInputChange} required />
+
+      <label>Descripción:</label>
+      <textarea name="descripcion" value={productData.descripcion} onChange={handleInputChange} required />
+
+      <label>Subir Imagen:</label>
+      <input type="file" onChange={handleImageChange} />
+      <button type="button" onClick={handleImageUpload}>Subir Imagen</button>
+
+      <label>Nombre de la imagen:</label>
+      <input type="text" name="thumbnail" value={productData.thumbnail} onChange={handleInputChange} required />
+
+      <button type="submit">Crear Producto</button>
+    </form>
+  );
+};
+
+export default Donate;
