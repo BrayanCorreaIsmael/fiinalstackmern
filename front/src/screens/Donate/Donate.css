@@ -1,54 +1,24 @@
-.text-Donate{
-    background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  
-  
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+/* styles.css */
+
+/* Aplicar estilos al body para establecer el fondo celeste */
+.form {
+  background-color: skyblue;
+  font-family: Arial, sans-serif;
+  color: black;
 }
 
-/* CSS */
-.button-74 {
-  background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
+/* Aplicar estilos a los labels */
+label {
   display: inline-block;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  width: 50%; /* Ancho de la mitad de la pantalla */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+  margin-bottom: 8px;
 }
 
-.button-74:hover {
-  background-color: #fff;
-}
-
-.button-74:active {
-  box-shadow: #422800 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .button-74 {
-    min-width: 120px;
-    padding: 0 25px;
-  }
+/* Aplicar estilos al formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px; /* Ajusta según tus necesidades para limitar el ancho del formulario */
+  margin: 0 auto; /* Centra el formulario en la pantalla */
 }
