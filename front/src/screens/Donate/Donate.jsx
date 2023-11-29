@@ -8,7 +8,7 @@ const Donate = () => {
     precio: 0,
     stock: 0,
     descripcion: '',
-    thumbnail: '', // Manteniendo thumbnail para la URL de la imagen
+    thumbnail: '', 
   });
 
   const [image, setImage] = useState(null);
@@ -30,15 +30,15 @@ const Donate = () => {
       if (productData.thumbnail === image.name) {
         const formData = new FormData();
         formData.append('image', image);
-      // Cambia la URL a la ruta correspondiente de tu servidor
+      
       const response = await axios.post('http://localhost:3040/api/upload', formData);
 
       console.log(response.data);
-      // Actualiza la URL de la imagen en el estado del producto
+      
       setProductData({ ...productData, thumbnail: response.data.url });
 
     } else {
-      console.log('El nombre de la imagen no coincide con la imagen subida');
+      alert('El nombre de la imagen no coincide con la imagen subida');
     }} catch (error) {
       console.error('Error al subir la imagen', error);
     }
@@ -47,7 +47,10 @@ const Donate = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Validar si el nombre de la imagen coincide con el valor ingresado
+    if (!image) {
+      alert('Por favor, selecciona una imagen antes de crear el producto.');
+      return;
+    }
     if (productData.thumbnail === image.name) {
       try {
         // Realizar la solicitud POST para crear el producto
@@ -60,7 +63,7 @@ const Donate = () => {
         });
 
         if (response.ok) {
-          console.log('Producto creado exitosamente');
+          alert('Producto creado exitosamente, falta subir la imagen');
         } else {
           console.error('Error al crear el producto');
         }
@@ -69,7 +72,7 @@ const Donate = () => {
       }
     } else {
       // Mostrar un mensaje de error o realizar alguna acción cuando el nombre no coincide
-      console.log('El nombre de la imagen no coincide con el valor ingresado');
+      alert('El nombre de la imagen no coincide con el valor ingresado');
     }
   };
 
