@@ -1,6 +1,5 @@
 const Product = require("../models/productModel");
 
-/* Funcion para controlar la creacion de un producto */
 const createProduct = async (product) => {
   const newProduct = new Product(product);
   try {
@@ -30,8 +29,6 @@ const deleteProduct = async (pid) => {
     return { error: "id no valido" };
   }
 };
-
-/* Desarrolla la ruta para crear productos */
 
 const updateProduct = async (pid, updatedProductData) => {
   try {

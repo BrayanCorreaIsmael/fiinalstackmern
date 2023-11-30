@@ -53,7 +53,6 @@ const Donate = () => {
     }
     if (productData.thumbnail === image.name) {
       try {
-        // Realizar la solicitud POST para crear el producto
         const response = await fetch('http://localhost:3040/api/products/', {
           method: 'POST',
           headers: {
@@ -71,14 +70,14 @@ const Donate = () => {
         console.error('Error de red:', error);
       }
     } else {
-      // Mostrar un mensaje de error o realizar alguna acción cuando el nombre no coincide
       alert('El nombre de la imagen no coincide con el valor ingresado');
     }
   };
 
 
   return (
-    
+    <div className="container">
+
     <form onSubmit={handleSubmit} className='form'>
       <label>Nombre:</label>
       <input type="text" name="nombre" value={productData.nombre} onChange={handleInputChange} required />
@@ -101,6 +100,11 @@ const Donate = () => {
 
       <button type="submit">Crear Producto</button>
     </form>
+    <p className="additional-text">
+    No encuentras lo que buscas, añádelo.
+
+    </p>
+    </div>
 
   );
 };

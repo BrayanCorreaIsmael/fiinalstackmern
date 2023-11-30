@@ -45,14 +45,10 @@ productRouter.get("/:pid", async (req, res) => {
   }
 });
 
-// ... (rutas existentes)
-
-// Ruta para actualizar un producto usando PATCH
 productRouter.patch("/:pid", async (req, res) => {
   const { pid } = req.params;
   const updatedData = req.body;
 
-  // Verificamos si se proporcionaron datos para actualizar
   if (!Object.keys(updatedData).length) {
     return res
       .status(400)
@@ -71,16 +67,5 @@ productRouter.patch("/:pid", async (req, res) => {
     return res.status(404).json({ ok: false, error: result.error });
   }
 });
-
-/* NO FAIL NO GAINS */
-/* crea un endpoint que sesa :pid y de tipo get. Al hacer un get nos devolvera el producto con el pid igual al pasado por params o un 'product not found' con status 404
-
-Crear la funcion controladora getById
-
-formato de repsuesta:
-
-{ok: (si esta bien es true sino es false), product: }
-*/
-// Middleware para manejar errores
 
 module.exports = productRouter;

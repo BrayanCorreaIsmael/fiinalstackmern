@@ -8,7 +8,7 @@ const createUser = async (user) => {
 };
 
 const getUser = async () => {};
-/* Verifica si el usuario ya existe */
+
 const verifyExistUser = async () => {};
 
 module.exports = { getUser, verifyExistUser, createUser };
